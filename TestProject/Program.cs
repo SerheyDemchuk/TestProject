@@ -6,14 +6,14 @@ namespace TestProject
 {
     public static class ZipArchiveExtensionMethods
     {
-        public static void B (this ZipArchiveEntry zipArchiveEntry)
+        public static void B(this ZipArchiveEntry zipArchiveEntry)
         {
             //Some code here
         }
     }
     class Program
     {
-        static void Main(string[] args)
+        void A()
         {
             //Path to zip
             string zipPath = @"..\..\testZip.zip";
@@ -36,7 +36,7 @@ namespace TestProject
                     {
                         //Get destination path
                         string destinationPath = Path.GetFullPath(Path.Combine(folderPath, entry.FullName));
-                        
+
                         //Extract csv files to destination path
                         entry.ExtractToFile(destinationPath);
 
@@ -47,6 +47,12 @@ namespace TestProject
             }
             //Delete temporary folder and all files inside it
             System.IO.Directory.Delete(folderPath, true);
+        }
+
+        static void Main(string[] args)
+        {
+            Program test = new Program();
+            test.A();
 
         }
     }
